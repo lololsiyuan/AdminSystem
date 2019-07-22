@@ -17,7 +17,10 @@ module.exports = {
     /*
      ** Customize the progress-bar color
      */
-    loading: { color: '#fff' },
+    loading: { color: '#1ad' },
+    // router: {
+    //     base: '/AdminSystem/'
+    // }
     /*
      ** Global CSS
      */
