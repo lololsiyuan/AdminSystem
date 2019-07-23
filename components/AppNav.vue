@@ -1,20 +1,24 @@
 <template>
   <el-row class="tac">
     <el-col :span="24">
-      <el-menu>
-        <el-menu-item index="1">
-          <i class="el-icon-menu"></i>
-          <span slot="title">导航1</span>
+      <el-menu
+        router
+        :default-active="$route.path"
+        >
+        <el-menu-item :index="item.index" v-for="item in NavHeader" :key="item.name" v-if="item.bIsSubmenu==false">
+          <i :class="item.icon"></i>
+          <span slot="title">{{ item.name }}</span>
         </el-menu-item>
-        <el-submenu index="2">
+        <el-submenu :index="item.index" v-else>
           <template slot="title">
-            <i class="el-icon-location"></i>
-            <span>导航2</span>
+            <i :class="item.icon"></i>
+            <span>{{ item.name }}</span>
           </template>
           <el-menu-item-group>
-            <template slot="title">分组一</template>
-            <el-menu-item index="1-1">选项1</el-menu-item>
-            <el-menu-item index="1-2">选项2</el-menu-item>
+            <el-menu-item v-for="(menuitem, menuindex) in item.subMenu" :index="menuitem.index" :key="menuindex">
+              <i :class="item.icon"></i>
+              <span slot="title">{{ menuitem.name }}</span>
+            </el-menu-item>
           </el-menu-item-group>
         </el-submenu>
       </el-menu>
@@ -22,15 +26,18 @@
   </el-row>
 </template>
 <script>
-import { AppSite } from '~/untils/config';
+import { AppSite,NavHeader } from '~/untils/config';
 export default {
   data:function(){
     return {
-      AppSite: AppSite
+      AppSite: AppSite,
+      NavHeader:NavHeader,
     }
   },
   mounted() {
     console.log(this,AppSite);
+  },
+  methods: {
   },
 }
 </script>
