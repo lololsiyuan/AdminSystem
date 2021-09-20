@@ -23,7 +23,7 @@
     "vue": "^2.6.10",
     "vue-loader": "^15.7.1",
     "webpack": "^4.36.1",
-    "zrender": "^4.0.7"
+    "zrender": "^5.2.1"
   },
   "devDependencies": {
     "nodemon": "^1.18.9"
